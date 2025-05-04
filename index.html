@@ -26,15 +26,15 @@
       display: none;
     }
     .btn {
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  background-color: #fe6e00;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      background-color: #fe6e00;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
     .btn:hover {
       background-color: #e05d00;
     }
@@ -42,11 +42,17 @@
       display: none;
       margin-top: 2rem;
     }
+    .admin-btn {
+      margin-top: 1rem;
+      background-color: #011b2f;
+      font-size: 0.9rem;
+    }
   </style>
 </head>
 <body>
   <h1>Изтегли своята карта за седмицата</h1>
-  <button class="btn" onclick="drawCard()">ТВОИТЕ 15 МИНУТИ</button>
+  <button class="btn" onclick="drawCard()">Тегли карта</button>
+  <button class="btn admin-btn" onclick="forceDrawCard()">Админ теглене 🛠</button>
   <img id="cardImg" class="card-img" src="" alt="Твоята карта">
 
   <div class="limit-box" id="limitBox">
@@ -58,58 +64,58 @@
 
   <script>
     const images = [
-  "https://drive.google.com/uc?export=view&id=1RPel_hY1mzI_9M536TS9AvPA2fqAEf8u",
-  "https://drive.google.com/uc?export=view&id=1wV5VG7xyE8-mzdMM6_uPSwkxyZiECXdI",
-  "https://drive.google.com/uc?export=view&id=1_zbnG38Ql_a5_2_eBG6pOM2YVzB0djNR",
-  "https://drive.google.com/uc?export=view&id=14gsAjCDcCGLl_M5k09SCHgjrqI7KQ14b",
-  "https://drive.google.com/uc?export=view&id=1lzONIFGA5Kyoi77VQM2GnjN8PqwjRbE8",
-  "https://drive.google.com/uc?export=view&id=1qfNtwGVSGBvPoQVyJmdJyF_tfXXszLPd",
-  "https://drive.google.com/uc?export=view&id=1_UPHTu3GqjHOTHjgojwLrRAWo6L8dctl",
-  "https://drive.google.com/uc?export=view&id=1or29qZh0Mkuu9VziF_TIUgcaQ0FNdlON",
-  "https://drive.google.com/uc?export=view&id=1ut8Rm-ivo0xB5SRhJqhXasp2Dj7m-LEN",
-  "https://drive.google.com/uc?export=view&id=1xSmmoDRlFa28Sews4-Qf6vvLpTY3GVhr",
-  "https://drive.google.com/uc?export=view&id=1BeL4lGqnC0cnnm_Uu7Nz6qHHu2kT7hV0",
-  "https://drive.google.com/uc?export=view&id=1AASixJVxJqxnXmveBv4sCn4sqERc1MLj",
-  "https://drive.google.com/uc?export=view&id=1MEm3txGew1vQC8jrU1lPNvj-s3VC08VT",
-  "https://drive.google.com/uc?export=view&id=1pNDxkwyWzwzLf12N4eYZugEgYzt0CYkz",
-  "https://drive.google.com/uc?export=view&id=1-flgHVm8hUMME5gFIgCXiw338rfJf0AM",
-  "https://drive.google.com/uc?export=view&id=1FT3ULlz4mLVsxAHd1_ogIBKUrq9sYbrH",
-  "https://drive.google.com/uc?export=view&id=18HBn5l9CW8_FjI2loHysBd_XIfaxKyv2",
-  "https://drive.google.com/uc?export=view&id=1Ltb30W1HAfW2srOG4JjO3IHPrTnp-7EV",
-  "https://drive.google.com/uc?export=view&id=1AuIaNwym38EMfyI5a3tRyoZAi_oP4mJA",
-  "https://drive.google.com/uc?export=view&id=1syJaOu3kS4KI9jHpsQeSuhkH6le8AWxv",
-  "https://drive.google.com/uc?export=view&id=1Us72CjzDvrM4mW8PEBJo3qBcFcQM7CdZ",
-  "https://drive.google.com/uc?export=view&id=1-lfHzEL_1unccpQUxkViDJdMI8GmAGu-",
-  "https://drive.google.com/uc?export=view&id=15UxlWDtipIa7WXeaaPnkcOyRMck9s_OE",
-  "https://drive.google.com/uc?export=view&id=1hVa9LAYnhh8jHycGh2rI2bRJTO8zcbLp",
-  "https://drive.google.com/uc?export=view&id=1q1lxNXrkFAW1_H3qb4WQ4uNhivUu2hAu",
-  "https://drive.google.com/uc?export=view&id=1rqKjH6lgzIYue6st3H_ffa87vjlOeLWR",
-  "https://drive.google.com/uc?export=view&id=1dw2iDsZWM2u1sg7TWYTRctBZtX13jSsZ",
-  "https://drive.google.com/uc?export=view&id=1IPs7mMF1oJZjKvnBeYlrRFbc7pitfuNa",
-  "https://drive.google.com/uc?export=view&id=1GQ3S3WzFKzA4yigMwKMumvGIAllUkTci",
-  "https://drive.google.com/uc?export=view&id=1qCe7cWxbShiUwnsn01tU7zCS-sKArIZW",
-  "https://drive.google.com/uc?export=view&id=1AUIXmzeIO14tYsBaNkVNh910usOIAHB_",
-  "https://drive.google.com/uc?export=view&id=1B4oTyQgeNHtDQpgaMGzYXHJzQ9h8_GeF",
-  "https://drive.google.com/uc?export=view&id=1h2CtQ85AM-AzDDNi5dKHAPSxdHvMJte6",
-  "https://drive.google.com/uc?export=view&id=1hqtOlMFI2m5pp0YrVEECQ-W6-DmkUZaC",
-  "https://drive.google.com/uc?export=view&id=1Q3Pcbz5cL4t6K8adzqIc16nkHztLL-dO",
-  "https://drive.google.com/uc?export=view&id=1vNQWKU-jzNkmaJn3wIpN216G4QJudkP-",
-  "https://drive.google.com/uc?export=view&id=1xv7h-BqfiZAfKHNJBcragD-0EzzNzzhb",
-  "https://drive.google.com/uc?export=view&id=19abQITlJW-jguMMhTq5ZLFmXVg8hsjUS",
-  "https://drive.google.com/uc?export=view&id=1QxOMBj_WbD86NvKib5cIAR2RTxBPUaBQ",
-  "https://drive.google.com/uc?export=view&id=1u01YBhFAKRKQuXlzbySoRCRUBkaJiqjz",
-  "https://drive.google.com/uc?export=view&id=1HTd66tFfdCfrMkc07lYKtd1JwKBTbJDC",
-  "https://drive.google.com/uc?export=view&id=1lIlTUkN6A1dXeiiSYbU7LN5IacxJWgLC",
-  "https://drive.google.com/uc?export=view&id=1jzI7drymrECgybmu8lENtyA8C0-b-dh0",
-  "https://drive.google.com/uc?export=view&id=1roJm7XxHuRvWCyMnODZ0yLtjUFECu0Ob",
-  "https://drive.google.com/uc?export=view&id=1YkH4zsoyACWwhoJoz5jVf61IINhkK4c-",
-  "https://drive.google.com/uc?export=view&id=1AmdVUS0uwwsfsV4O-dVhSeaXHTcimsjY",
-  "https://drive.google.com/uc?export=view&id=1EmV961i3jki_BU3X9ny-pCwqVLVNMvYP",
-  "https://drive.google.com/uc?export=view&id=1M16V61M1FWShyqmxySMSIP7z2yMeEt29",
-  "https://drive.google.com/uc?export=view&id=1RWdZrDTci3m-eyZrfuUVrSJ-kKnYKtmP",
-  "https://drive.google.com/uc?export=view&id=1ngYqhrRYRukU9aEWH6kASZ0H62mNmnbW",
-  "https://drive.google.com/uc?export=view&id=1H6JJnTxJwVmOmo_h2qhe1s4naF9qx8v6"
-];
+      "https://drive.google.com/uc?export=view&id=1RPel_hY1mzI_9M536TS9AvPA2fqAEf8u",
+      "https://drive.google.com/uc?export=view&id=1wV5VG7xyE8-mzdMM6_uPSwkxyZiECXdI",
+      "https://drive.google.com/uc?export=view&id=1_zbnG38Ql_a5_2_eBG6pOM2YVzB0djNR",
+      "https://drive.google.com/uc?export=view&id=14gsAjCDcCGLl_M5k09SCHgjrqI7KQ14b",
+      "https://drive.google.com/uc?export=view&id=1lzONIFGA5Kyoi77VQM2GnjN8PqwjRbE8",
+      "https://drive.google.com/uc?export=view&id=1qfNtwGVSGBvPoQVyJmdJyF_tfXXszLPd",
+      "https://drive.google.com/uc?export=view&id=1_UPHTu3GqjHOTHjgojwLrRAWo6L8dctl",
+      "https://drive.google.com/uc?export=view&id=1or29qZh0Mkuu9VziF_TIUgcaQ0FNdlON",
+      "https://drive.google.com/uc?export=view&id=1ut8Rm-ivo0xB5SRhJqhXasp2Dj7m-LEN",
+      "https://drive.google.com/uc?export=view&id=1xSmmoDRlFa28Sews4-Qf6vvLpTY3GVhr",
+      "https://drive.google.com/uc?export=view&id=1BeL4lGqnC0cnnm_Uu7Nz6qHHu2kT7hV0",
+      "https://drive.google.com/uc?export=view&id=1AASixJVxJqxnXmveBv4sCn4sqERc1MLj",
+      "https://drive.google.com/uc?export=view&id=1MEm3txGew1vQC8jrU1lPNvj-s3VC08VT",
+      "https://drive.google.com/uc?export=view&id=1pNDxkwyWzwzLf12N4eYZugEgYzt0CYkz",
+      "https://drive.google.com/uc?export=view&id=1-flgHVm8hUMME5gFIgCXiw338rfJf0AM",
+      "https://drive.google.com/uc?export=view&id=1FT3ULlz4mLVsxAHd1_ogIBKUrq9sYbrH",
+      "https://drive.google.com/uc?export=view&id=18HBn5l9CW8_FjI2loHysBd_XIfaxKyv2",
+      "https://drive.google.com/uc?export=view&id=1Ltb30W1HAfW2srOG4JjO3IHPrTnp-7EV",
+      "https://drive.google.com/uc?export=view&id=1AuIaNwym38EMfyI5a3tRyoZAi_oP4mJA",
+      "https://drive.google.com/uc?export=view&id=1syJaOu3kS4KI9jHpsQeSuhkH6le8AWxv",
+      "https://drive.google.com/uc?export=view&id=1Us72CjzDvrM4mW8PEBJo3qBcFcQM7CdZ",
+      "https://drive.google.com/uc?export=view&id=1-lfHzEL_1unccpQUxkViDJdMI8GmAGu-",
+      "https://drive.google.com/uc?export=view&id=15UxlWDtipIa7WXeaaPnkcOyRMck9s_OE",
+      "https://drive.google.com/uc?export=view&id=1hVa9LAYnhh8jHycGh2rI2bRJTO8zcbLp",
+      "https://drive.google.com/uc?export=view&id=1q1lxNXrkFAW1_H3qb4WQ4uNhivUu2hAu",
+      "https://drive.google.com/uc?export=view&id=1rqKjH6lgzIYue6st3H_ffa87vjlOeLWR",
+      "https://drive.google.com/uc?export=view&id=1dw2iDsZWM2u1sg7TWYTRctBZtX13jSsZ",
+      "https://drive.google.com/uc?export=view&id=1IPs7mMF1oJZjKvnBeYlrRFbc7pitfuNa",
+      "https://drive.google.com/uc?export=view&id=1GQ3S3WzFKzA4yigMwKMumvGIAllUkTci",
+      "https://drive.google.com/uc?export=view&id=1qCe7cWxbShiUwnsn01tU7zCS-sKArIZW",
+      "https://drive.google.com/uc?export=view&id=1AUIXmzeIO14tYsBaNkVNh910usOIAHB_",
+      "https://drive.google.com/uc?export=view&id=1B4oTyQgeNHtDQpgaMGzYXHJzQ9h8_GeF",
+      "https://drive.google.com/uc?export=view&id=1h2CtQ85AM-AzDDNi5dKHAPSxdHvMJte6",
+      "https://drive.google.com/uc?export=view&id=1hqtOlMFI2m5pp0YrVEECQ-W6-DmkUZaC",
+      "https://drive.google.com/uc?export=view&id=1Q3Pcbz5cL4t6K8adzqIc16nkHztLL-dO",
+      "https://drive.google.com/uc?export=view&id=1vNQWKU-jzNkmaJn3wIpN216G4QJudkP-",
+      "https://drive.google.com/uc?export=view&id=1xv7h-BqfiZAfKHNJBcragD-0EzzNzzhb",
+      "https://drive.google.com/uc?export=view&id=19abQITlJW-jguMMhTq5ZLFmXVg8hsjUS",
+      "https://drive.google.com/uc?export=view&id=1QxOMBj_WbD86NvKib5cIAR2RTxBPUaBQ",
+      "https://drive.google.com/uc?export=view&id=1u01YBhFAKRKQuXlzbySoRCRUBkaJiqjz",
+      "https://drive.google.com/uc?export=view&id=1HTd66tFfdCfrMkc07lYKtd1JwKBTbJDC",
+      "https://drive.google.com/uc?export=view&id=1lIlTUkN6A1dXeiiSYbU7LN5IacxJWgLC",
+      "https://drive.google.com/uc?export=view&id=1jzI7drymrECgybmu8lENtyA8C0-b-dh0",
+      "https://drive.google.com/uc?export=view&id=1roJm7XxHuRvWCyMnODZ0yLtjUFECu0Ob",
+      "https://drive.google.com/uc?export=view&id=1YkH4zsoyACWwhoJoz5jVf61IINhkK4c-",
+      "https://drive.google.com/uc?export=view&id=1AmdVUS0uwwsfsV4O-dVhSeaXHTcimsjY",
+      "https://drive.google.com/uc?export=view&id=1EmV961i3jki_BU3X9ny-pCwqVLVNMvYP",
+      "https://drive.google.com/uc?export=view&id=1M16V61M1FWShyqmxySMSIP7z2yMeEt29",
+      "https://drive.google.com/uc?export=view&id=1RWdZrDTci3m-eyZrfuUVrSJ-kKnYKtmP",
+      "https://drive.google.com/uc?export=view&id=1ngYqhrRYRukU9aEWH6kASZ0H62mNmnbW",
+      "https://drive.google.com/uc?export=view&id=1H6JJnTxJwVmOmo_h2qhe1s4naF9qx8v6"
+    ];
 
     function drawCard() {
       const now = Date.now();
@@ -127,6 +133,14 @@
       img.style.display = "block";
       document.getElementById("limitBox").style.display = "none";
       localStorage.setItem("drawTime", now);
+    }
+
+    function forceDrawCard() {
+      const index = Math.floor(Math.random() * images.length);
+      const img = document.getElementById("cardImg");
+      img.src = images[index];
+      img.style.display = "block";
+      document.getElementById("limitBox").style.display = "none";
     }
   </script>
 </body>
