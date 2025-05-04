@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>15 минути за мен</title>
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Jost&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Jost', sans-serif;
+      background: #fbfbfb;
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      font-family: 'Amatic SC', cursive;
+      font-size: 3rem;
+      color: #fe6e00;
+      margin-bottom: 1rem;
+    }
+    .card-img {
+      max-width: 100%;
+      border-radius: 12px;
+      margin-top: 1rem;
+      display: none;
+    }
+    .btn {
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      background-color: #fe6e00;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #e05d00;
+    }
+    .limit-box {
+      display: none;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Изтегли своята карта за седмицата</h1>
+  <button class="btn" onclick="drawCard()">Тегли карта</button>
+  <img id="cardImg" class="card-img" src="" alt="Твоята карта">
+
+  <div class="limit-box" id="limitBox">
+    <p>Още една безплатна карта ще можеш да изтеглиш след 7 дни.</p>
+    <a href="https://buy.stripe.com/7sIg2pdQb2TN8jSdRr" target="_blank">
+      <button class="btn">Плати и изтегли нова</button>
+    </a>
+  </div>
+
+  <script>
+    const images = [
+      "https://example.com/image1.jpg",
+      "https://example.com/image2.jpg",
+      "https://example.com/image3.jpg"
+      // Добави всички реални линкове тук
+    ];
+
+    function drawCard() {
+      const now = Date.now();
+      const lastDraw = localStorage.getItem("drawTime");
+
+      if (lastDraw && now - parseInt(lastDraw) < 7 * 24 * 60 * 60 * 1000) {
+        document.getElementById("cardImg").style.display = "none";
+        document.getElementById("limitBox").style.display = "block";
+        return;
+      }
+
+      const index = Math.floor(Math.random() * images.length);
+      const img = document.getElementById("cardImg");
+      img.src = images[index];
+      img.style.display = "block";
+      document.getElementById("limitBox").style.display = "none";
+      localStorage.setItem("drawTime", now);
+    }
+  </script>
+</body>
+</html>
