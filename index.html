@@ -20,25 +20,24 @@
       margin-bottom: 1rem;
     }
     .card-img {
-  max-width: 100%;
-  border-radius: 12px;
-  margin: 1rem auto 0 auto;
-  display: none;
-  display: block;
-  opacity: 0;
-  transition: opacity 0.8s ease-in-out;
-}
+      max-width: 100%;
+      border-radius: 12px;
+      margin: 1rem auto 0 auto;
+      visibility: hidden;
+      opacity: 0;
+      transition: opacity 0.8s ease-in-out;
+    }
     .btn {
-  padding: 1rem 2rem;
-  font-size: 1rem;
-  background-color: #fe6e00;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  margin: 0.5rem;
-}
+      padding: 1rem 2rem;
+      font-size: 1rem;
+      background-color: #fe6e00;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      margin: 0.5rem;
+    }
     .btn:hover {
       background-color: #e05d00;
     }
@@ -55,7 +54,7 @@
 </head>
 <body>
   <h1>Изтегли своята карта за седмицата</h1>
-  <button class="btn" onclick="drawCard()">Тегли карта</button>
+  <button class="btn" onclick="drawCard()">15 МИНУТИ ЗА МЕН</button>
   <button class="btn admin-btn" onclick="forceDrawCard()">Админ теглене 🛠</button>
   <img id="cardImg" class="card-img" src="" alt="Твоята карта">
 
@@ -68,84 +67,103 @@
 
   <script>
     const images = [
-  "https://i.ibb.co/gL5c69xz.jpg",
-  "https://i.ibb.co/WNTywqQt.jpg",
-  "https://i.ibb.co/Qj326vQj.jpg",
-  "https://i.ibb.co/R4z5m4Yr.jpg",
-  "https://i.ibb.co/BKjKFqxd.jpg",
-  "https://i.ibb.co/LDMdq3fF.jpg",
-  "https://i.ibb.co/Cp3CrBxn.jpg",
-  "https://i.ibb.co/HDjYTDW6.jpg",
-  "https://i.ibb.co/4wMZq18X.jpg",
-  "https://i.ibb.co/rR0h7gPy.jpg",
-  "https://i.ibb.co/67yf2W9y.jpg",
-  "https://i.ibb.co/wfgsyhN.jpg",
-  "https://i.ibb.co/VpgGJtM9.jpg",
-  "https://i.ibb.co/0yhHxcgL.jpg",
-  "https://i.ibb.co/zwXjtyc.jpg",
-  "https://i.ibb.co/zhfn0cKp.jpg",
-  "https://i.ibb.co/CKjCdn4h.jpg",
-  "https://i.ibb.co/ynNGqK3V.jpg",
-  "https://i.ibb.co/gMLDbc1x.jpg",
-  "https://i.ibb.co/0pvKJ6b4.jpg",
-  "https://i.ibb.co/1f2Fb1XT.jpg",
-  "https://i.ibb.co/Lbc2Nx1.jpg",
-  "https://i.ibb.co/Kpc55015.jpg",
-  "https://i.ibb.co/0pSrQW56.jpg",
-  "https://i.ibb.co/Fq7J8RkB.jpg",
-  "https://i.ibb.co/LzMmN7vN.jpg",
-  "https://i.ibb.co/9kGBNnWZ.jpg",
-  "https://i.ibb.co/PsLjRZc5.jpg",
-  "https://i.ibb.co/v4Tn6WpB.jpg",
-  "https://i.ibb.co/Y75nZfZC.jpg",
-  "https://i.ibb.co/DfWdb4R6.jpg",
-  "https://i.ibb.co/Z1NWdx5m.jpg",
-  "https://i.ibb.co/HLgJMWn7.jpg",
-  "https://i.ibb.co/PH8k2Fw.jpg",
-  "https://i.ibb.co/PZxG4YPS.jpg",
-  "https://i.ibb.co/vx79q7gj.jpg",
-  "https://i.ibb.co/G47B47Q8.jpg",
-  "https://i.ibb.co/Ng0fBs95.jpg",
-  "https://i.ibb.co/DP61vH52.jpg",
-  "https://i.ibb.co/JRcRNZck.jpg",
-  "https://i.ibb.co/DDCy84Rq.jpg",
-  "https://i.ibb.co/KxQcJhhw.jpg",
-  "https://i.ibb.co/LXppMr4X.jpg",
-  "https://i.ibb.co/C33n25bf.jpg",
-  "https://i.ibb.co/Kj1YmbxT.jpg",
-  "https://i.ibb.co/7dP9HPmJ.jpg",
-  "https://i.ibb.co/qw18Qxt.jpg",
-  "https://i.ibb.co/Mytgqj6L.jpg",
-  "https://i.ibb.co/TMdxg21v.jpg",
-  "https://i.ibb.co/mFRZjVjV.jpg",
-  "https://i.ibb.co/twHh4qKM.jpg"
-];
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/1.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/2.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/3.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/4.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/5.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/6.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/7.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/8.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/9.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/10.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/11.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/12.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/13.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/14.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/15.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/16.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/17.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/18.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/19.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/20.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/21.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/22.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/23.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/24.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/25.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/26.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/27.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/28.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/29.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/30.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/31.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/32.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/33.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/34.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/35.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/36.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/37.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/38.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/39.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/40.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/41.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/42.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/43.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/44.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/45.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/46.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/47.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/48.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/49.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/50.png?raw=true",
+  "https://github.com/DoMoments/weekly-card-picker/blob/main/51.png?raw=true"
+    ];
 
     function drawCard() {
       const now = Date.now();
       const lastDraw = localStorage.getItem("drawTime");
 
+      // Check if 7 days have passed since the last draw
       if (lastDraw && now - parseInt(lastDraw) < 7 * 24 * 60 * 60 * 1000) {
-        document.getElementById("cardImg").style.display = "none";
+        document.getElementById("cardImg").style.visibility = "hidden";
+        document.getElementById("cardImg").style.opacity = "0";
         document.getElementById("limitBox").style.display = "block";
         return;
       }
 
+      // Draw a new card
       const index = Math.floor(Math.random() * images.length);
       const img = document.getElementById("cardImg");
       img.src = images[index];
-      img.style.display = "block";
+      img.alt = `Card ${index + 1}`;
+      img.style.visibility = "visible";
       img.style.opacity = "1";
       document.getElementById("limitBox").style.display = "none";
-      localStorage.setItem("drawTime", now);
+
+      // Handle broken images
+      img.onerror = () => {
+        img.src = "https://via.placeholder.com/600x400?text=Card+Not+Available";
+      };
+
+      // Save the current draw time
+      localStorage.setItem("drawTime", now.toString());
     }
 
     function forceDrawCard() {
+      // Draw a card without any restrictions
       const index = Math.floor(Math.random() * images.length);
       const img = document.getElementById("cardImg");
       img.src = images[index];
-      img.style.display = "block";
+      img.alt = `Card ${index + 1}`;
+      img.style.visibility = "visible";
+      img.style.opacity = "1";
       document.getElementById("limitBox").style.display = "none";
+
+      // Handle broken images
+      img.onerror = () => {
+        img.src = "https://via.placeholder.com/600x400?text=Card+Not+Available";
+      };
     }
   </script>
 </body>
